@@ -1,0 +1,12 @@
+[user]
+	name = Alexander Clark
+	email = sasha.jackal@gmail.com
+
+[github]
+	user = alexander-clark
+
+[core]
+	editor = vim
+
+[alias]
+  up = "!git remote update -p; git merge --ff-only @{u}"
