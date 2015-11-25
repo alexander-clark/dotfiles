@@ -87,7 +87,7 @@ map <Leader>ri :VimuxInspectRunner<CR>
 map <Leader>rq :VimuxCloseRunner<CR>
 map <Leader>rz :VimuxZoomRunner<CR>
 
-vmap <Leader>vs "vy :call VimuxSlime()<CR>
+vmap <Leader>vs "vy:call VimuxSlime()<CR>
 nmap <Leader>vs vip<Leader>vs<CR>
 
 map <silent> <C-n> :NERDTreeToggle<CR>
