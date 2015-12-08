@@ -27,21 +27,20 @@ set wildmode=longest:list,full
 set backspace=indent,eol,start
 
 " Keep backup and swap files out of the way
-set backupdir=~/.vim/backup//
+set backupdir=$HOME/.vim/backup//
 set directory=$HOME/.vim/swapfiles//
-
-" Colors
-colorscheme gruvbox
-set background=dark
 
 " File types
 autocmd BufRead,BufNewFile *.axlsx set ft=ruby
 
 " Load plugins
-
-if filereadable(expand("$VIM/vundle.vim"))
-  source $VIM/vundle.vim
+if filereadable(expand("$HOME/.vim/vundle.vim"))
+  source $HOME/.vim/vundle.vim
 endif
+
+" Colors
+colorscheme gruvbox
+set background=dark
 
 " Plugin settings
 let g:airline_powerline_fonts = 1
