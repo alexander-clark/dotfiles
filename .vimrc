@@ -4,6 +4,8 @@ syntax enable        " syntax highlighting
 
 set number           " line numbers
 
+set laststatus=2     " always display a status line
+
 " Tab settings
 set tabstop=2
 set softtabstop=2
@@ -51,6 +53,9 @@ let g:ackprg = 'ag --vimgrep'
 
 " Commands and functions
 function! VimuxSlime()
+  if !exists("g:VimuxRunnerPaneIndex") || _VimuxHasPane(g:VimuxRunnerPaneIndex) == -1
+    call VimuxOpenRunner()
+  endif
   call VimuxSendText(@v)
   call VimuxSendKeys("Enter")
 endfunction
@@ -66,7 +71,7 @@ command! Chrome execute ':silent !open -a Google\ Chrome'
 
 " Key mappings
 map <space> <Leader>
-map <Leader>sha :vsp ~/Dropbox/cleanup_list<CR>
+map <Leader>cle :vsp ~/Dropbox/cleanup_list<CR>
 
 noremap <Left> <NOP>
 noremap <Right> <NOP>
