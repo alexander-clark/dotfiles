@@ -25,6 +25,7 @@ zstyle ':completion:*:*:*' hosts $ssh_config_hosts
 
 alias startapp='pkill -9 -f subcontract; cd ~/Devel/bypass && foreman start'
 alias rcd='cd ~/Devel/bypass; zeus console'
+alias gap='ga -p'
 alias gcb='gco -b'
 alias gds='gd --staged'
 alias gstl='gsta list'
