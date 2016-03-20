@@ -50,6 +50,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:NERDSpaceDelims = 1
 let g:ackprg = 'ag --vimgrep'
+let g:syntastic_javascript_checkers = ["jshint"]
 
 " Commands and functions
 function! VimuxSlime()
