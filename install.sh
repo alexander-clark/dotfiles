@@ -34,6 +34,19 @@ link() {
   fi
 }
 
+install() {
+  if brew list $1; then
+    skip "$1 is already installed."
+  else
+    if brew install $1; then
+      success "$1 has been installed."
+    else
+      fail "Unable to install $1."
+      exit 1
+    fi
+  fi
+}
+
 # Make sure Homebrew is installed and up to date
 if which -s brew; then
   info "Homebrew was found. Attemping to update."
@@ -55,16 +68,10 @@ else
 fi
 
 # Install vim
-if brew list vim; then
-  skip "vim is already installed."
-else
-  if brew install vim; then
-    success "vim has been installed."
-  else
-    fail "Unable to install vim."
-    exit 1
-  fi
-fi
+install "vim"
+install "the_silver_searcher"
+install "tmux"
+install "reattach-to-user-namespace"
 
 # TODO make the above a function and iterate over packages vim rbenv the-silver-searcher, etc
 
@@ -73,3 +80,18 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 for file in .bash_profile .bashrc .editrc .gitconfig .inputrc .tmux.conf .vimrc .zlogin .zshrc; do
   link "$dir/$file" "$HOME/$file"
 done
+
+if [ -e "$HOME/.vim/bundle" ]; then
+  skip "Vundle already installed"
+else
+  git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim
+  if [[ $? != 0 ]]; then
+    fail "Unable to install Vundle"
+  else
+    success "Vundle has been installed"
+  fi
+fi
+link "$dir/vim/vundle.vim" "$HOME/.vim/vundle.vim"
+vim +PluginInstall +qall
+mkdir -p ~/.vim/backup
+mkdir -p ~/.vim/swapfiles
