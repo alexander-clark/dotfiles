@@ -12,6 +12,10 @@ source $ZSH/oh-my-zsh.sh
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alexander/bin"
 export EDITOR='vim'
+export DOCKER_TLS_VERIFY="1"
+export DOCKER_HOST="tcp://192.168.99.100:2376"
+export DOCKER_CERT_PATH="/Users/alexander/.docker/machine/machines/default"
+export DOCKER_MACHINE_NAME="default"
 
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
@@ -28,7 +32,6 @@ alias rcd='cd ~/Devel/bypass; zeus console'
 alias gap='ga -p'
 alias gcb='gco -b'
 alias gds='gd --staged'
-alias gstl='gsta list'
 alias gcop='gco production'
 alias tpairsetup="tmux -S /tmp/pair new -s pair"
 alias tpair="tmux -S /tmp/pair attach"
