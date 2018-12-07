@@ -1,6 +1,7 @@
 [user]
 	name = Alexander Clark
 	email = sasha.jackal@gmail.com
+  signingkey = DA186925A5A8197A
 
 [github]
 	user = alexander-clark
@@ -10,3 +11,10 @@
 
 [alias]
   up = "!git remote update -p; git merge --ff-only @{u}"
+
+[commit]
+  template = /Users/alexander/.gitmessage
+  gpgsign = true
+
+[pager]
+  branch = false

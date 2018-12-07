@@ -41,7 +41,7 @@ if filereadable(expand("$HOME/.vim/vundle.vim"))
 endif
 
 " Colors
-colorscheme gruvbox
+colorscheme nord
 set background=dark
 
 " Plugin settings
@@ -51,6 +51,7 @@ let g:airline#extensions#tabline#fnamemod = ':t'
 let g:NERDSpaceDelims = 1
 let g:ackprg = 'ag --vimgrep'
 let g:syntastic_javascript_checkers = ["jshint"]
+let g:VimuxResetSequence = "q jk G C"
 
 " Commands and functions
 function! VimuxSlime()

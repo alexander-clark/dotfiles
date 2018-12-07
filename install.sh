@@ -67,11 +67,33 @@ else
   fi
 fi
 
+# Make sure oh-my-zsh is installed
+if [ ! -n "$ZSH" ]; then
+  ZSH=~/.oh-my-zsh
+fi
+if [ -d "$ZSH" ]; then
+  skip "oh-my-zsh is already installed."
+else
+  info "oh-my-zsh is not installed. Attempting install."
+  sh -c "$(curl -fsSL https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh)"
+  if [[ $? != 0 ]]; then
+    fail "Unable to install oh-my-zsh."
+    exit 1
+  else
+    success "oh-my-zsh has been installed."
+  fi
+fi
+
 # Install vim
 install "vim"
 install "the_silver_searcher"
 install "tmux"
 install "reattach-to-user-namespace"
+install "bash-completion"
+install "git"
+install "rbenv"
+# brew tap homebrew/cask-fonts
+# brew cask install font-source-code-pro-for-powerline
 
 # TODO make the above a function and iterate over packages vim rbenv the-silver-searcher, etc
 

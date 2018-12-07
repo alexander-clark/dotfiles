@@ -4,3 +4,4 @@ set keymap vi-insert
 "jk" vi-movement-mode
 "\C-w": backward-kill-word
 "\C-p": history-search-backward
+"\C-x\C-e": edit-and-execute-command
