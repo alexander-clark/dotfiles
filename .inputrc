@@ -1,6 +1,7 @@
 set editing-mode vi
 set keymap vi-command
 set keymap vi-insert
+set enable-bracketed-paste
 "jk" vi-movement-mode
 "\C-w": backward-kill-word
 "\C-p": history-search-backward

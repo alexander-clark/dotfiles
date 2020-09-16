@@ -35,6 +35,11 @@ set directory=$HOME/.vim/swapfiles//
 " File types
 autocmd BufRead,BufNewFile *.axlsx set ft=ruby
 
+augroup Docker
+  au!
+  autocmd BufNewFile,BufRead Dockerfile-* set syntax=Dockerfile
+augroup END
+
 " Load plugins
 if filereadable(expand("$HOME/.vim/vundle.vim"))
   source $HOME/.vim/vundle.vim

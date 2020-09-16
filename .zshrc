@@ -13,6 +13,8 @@ source $ZSH/oh-my-zsh.sh
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alexander/bin"
 export EDITOR='vim'
 export GPG_TTY=$(tty)
+export DEV_DIRECTORY=/Users/alexander/Devel
+export COMPOSE_FILE="$DEV_DIRECTORY/scripts/docker-compose.yml"
 
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
@@ -25,10 +27,9 @@ zstyle ':completion:*:*:*' hosts $ssh_config_hosts
 
 # Personal aliases
 
-alias startapp='pkill -9 -f subcontract; cd ~/Devel/bypass && foreman start'
-alias rcd='cd ~/Devel/bypass; zeus console'
 alias gap='ga -p'
 alias gcb='gco -b'
+alias gdh='git --no-pager diff --name-status HEAD~1'
 alias gds='gd --staged'
 alias gcop='gco production'
 alias tpairsetup="tmux -S /tmp/pair new -s pair"
@@ -41,3 +42,4 @@ hitch() {
 }
 
 alias unhitch='hitch -u'
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
