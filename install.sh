@@ -91,15 +91,42 @@ install "tmux"
 install "reattach-to-user-namespace"
 install "bash-completion"
 install "git"
+install "mysql-client"
+install "libpq"
 install "rbenv"
+install "doctl"
+install "hub"
+install "terminal-notifier"
 # brew tap homebrew/cask-fonts
+# install "svn" # needed for font cask
 # brew cask install font-source-code-pro-for-powerline
+
+# brew cask install 1password
+# brew cask install iterm2
+# brew cask install slack
+# brew cask install spotify
+# brew cask install alfred3
+# brew cask install trailer
+# brew cask install freedom
+# brew cask install docker
+# brew cask install caffeine
+# brew cask install hammerspoon
+# brew cask install aptible
+# brew cask install awscli
+# brew cask install google-chrome
+# brew cask install firefox
+# brew cask install vienna
+# brew cask install sequel-pro
+
+# Paprika
+# Opus Domini?
+# Be Focused Pro
 
 # TODO make the above a function and iterate over packages vim rbenv the-silver-searcher, etc
 
 # Symlink dotfiles
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-for file in .bash_profile .bashrc .editrc .gitconfig .inputrc .tmux.conf .vimrc .zlogin .zshrc; do
+for file in .bash_profile .bashrc .ctags .editrc .gitconfig .gitmessage .global_ignore .inputrc .tmux.conf .vimrc .zlogin .zshrc; do
   link "$dir/$file" "$HOME/$file"
 done
 

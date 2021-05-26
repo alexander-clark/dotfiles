@@ -46,16 +46,22 @@ if filereadable(expand("$HOME/.vim/vundle.vim"))
 endif
 
 " Colors
-colorscheme nord
-set background=dark
+colorscheme embark
+" set background=dark
+let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
+let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
+set termguicolors
 
 " Plugin settings
+let g:airline_theme = 'embark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:NERDSpaceDelims = 1
 let g:ackprg = 'ag --vimgrep'
+let g:embark_terminal_italics = 1
 let g:syntastic_javascript_checkers = ["jshint"]
+let g:syntastic_always_populate_loc_list = 1
 let g:VimuxResetSequence = "q jk G C"
 
 " Commands and functions

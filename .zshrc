@@ -43,3 +43,4 @@ hitch() {
 
 alias unhitch='hitch -u'
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"
