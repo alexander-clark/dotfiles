@@ -1,11 +1,3 @@
-[user]
-	name = Alexander Clark
-	email = sasha.jackal@gmail.com
-  signingkey = DA186925A5A8197A
-
-[github]
-	user = alexander-clark
-
 [core]
 	editor = vim
 	excludesfile = /Users/alexander/.global_ignore
@@ -19,8 +11,12 @@
 
 [pager]
   branch = false
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
 	required = true
+
+[init]
+	defaultBranch = main

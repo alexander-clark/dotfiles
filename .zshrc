@@ -8,6 +8,10 @@ plugins=(git rails brew)
 
 source $ZSH/oh-my-zsh.sh
 
+if [ -f ~/.extra ]; then
+  source ~/.extra
+fi
+
 # User configuration
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alexander/bin"
@@ -31,7 +35,6 @@ alias gap='ga -p'
 alias gcb='gco -b'
 alias gdh='git --no-pager diff --name-status HEAD~1'
 alias gds='gd --staged'
-alias gcop='gco production'
 alias tpairsetup="tmux -S /tmp/pair new -s pair"
 alias tpair="tmux -S /tmp/pair attach"
 rtest() { bundle exec ruby -I "lib:test" "$*"; }
