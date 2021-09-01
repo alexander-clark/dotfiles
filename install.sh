@@ -34,8 +34,22 @@ link() {
   fi
 }
 
+copy() {
+  local src=$1 dst=$2
+  if [ -e "$dst" ]; then
+    skip "$dst exists"
+  else
+    if cp "$src" "$dst"; then
+      success "$src copied to $dst"
+    else
+      fail "unable to copy $src to $dst"
+    fi
+  fi
+}
+
 install() {
-  if brew list $1; then
+  # if brew list $1 &> /dev/null; then
+  if ! echo $installed | grep "^$1\$"; then
     skip "$1 is already installed."
   else
     if brew install $1; then
@@ -84,6 +98,7 @@ else
   fi
 fi
 
+installed=$(brew list)
 # Install vim
 install "vim"
 install "the_silver_searcher"
@@ -97,26 +112,22 @@ install "rbenv"
 install "doctl"
 install "hub"
 install "terminal-notifier"
-# brew tap homebrew/cask-fonts
-# install "svn" # needed for font cask
-# brew cask install font-source-code-pro-for-powerline
+install "ctags"
 
-# brew cask install 1password
-# brew cask install iterm2
-# brew cask install slack
-# brew cask install spotify
-# brew cask install alfred3
-# brew cask install trailer
-# brew cask install freedom
-# brew cask install docker
-# brew cask install caffeine
-# brew cask install hammerspoon
-# brew cask install aptible
-# brew cask install awscli
-# brew cask install google-chrome
-# brew cask install firefox
-# brew cask install vienna
-# brew cask install sequel-pro
+# brew install --cask 1password
+# brew install --cask iterm2
+# brew install --cask slack
+brew install --cask spotify
+brew install --cask alfred
+brew install --cask trailer
+brew install --cask freedom
+brew install --cask docker
+brew install --cask caffeine
+brew install --cask hammerspoon
+# brew install --cask awscli
+# brew install --cask google-chrome
+# brew install --cask firefox
+# brew install --cask vienna
 
 # Paprika
 # Opus Domini?
@@ -129,6 +140,10 @@ dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
 for file in .bash_profile .bashrc .ctags .editrc .gitconfig .gitmessage .global_ignore .inputrc .tmux.conf .vimrc .zlogin .zshrc; do
   link "$dir/$file" "$HOME/$file"
 done
+link "$dir/alexander.zsh-theme" "$HOME/.oh-my-zsh/themes/alexander.zsh-theme"
+
+copy "$dir/.gitconfig.local.template" "$HOME/.gitconfig.local"
+copy "$dir/.tmux.conf.local.template" "$HOME/.tmux.conf.local"
 
 if [ -e "$HOME/.vim/bundle" ]; then
   skip "Vundle already installed"
@@ -144,3 +159,7 @@ link "$dir/vim/vundle.vim" "$HOME/.vim/vundle.vim"
 vim +PluginInstall +qall
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/swapfiles
+
+# terminfo
+tic "$dir/tmux-256color-italic.terminfo"
+tic "$dir/xterm-256color-italic.terminfo"

@@ -1,0 +1,8 @@
+# User- or machine-specific config
+# [commit]
+#   gpgsign = true
+#
+# [user]
+#   name = John Doe
+#   email = foo@bar.baz
+#   signingkey = A1234567

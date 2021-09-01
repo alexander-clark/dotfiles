@@ -37,7 +37,8 @@ alias gdh='git --no-pager diff --name-status HEAD~1'
 alias gds='gd --staged'
 alias tpairsetup="tmux -S /tmp/pair new -s pair"
 alias tpair="tmux -S /tmp/pair attach"
-rtest() { bundle exec ruby -I "lib:test" "$*"; }
+# rtest() { bundle exec ruby -I "lib:test" "$*"; }
+rtest() { bundle exec rspec "$*"; }
 
 hitch() {
   command hitch "$@"
@@ -46,4 +47,5 @@ hitch() {
 
 alias unhitch='hitch -u'
 export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
 export PATH="/usr/local/sbin:$PATH"

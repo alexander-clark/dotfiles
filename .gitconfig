@@ -5,10 +5,6 @@
 [alias]
   up = "!git remote update -p; git merge --ff-only @{u}"
 
-[commit]
-  template = /Users/alexander/.gitmessage
-  gpgsign = true
-
 [pager]
   branch = false
 
@@ -20,3 +16,6 @@
 
 [init]
 	defaultBranch = main
+
+[include]
+  path = ~/.gitconfig.local

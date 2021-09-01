@@ -1,0 +1,7 @@
+new -s pair -n docker -c ~/Devel
+neww -n fe-editor -c ~/Devel/frontend
+neww -n fe-misc -c ~/Devel/frontend
+neww -n be-editor -c ~/Devel/api
+neww -n be-misc -c ~/Devel/api
+neww -n production
+set-window-option window-status-current-style bg=red
