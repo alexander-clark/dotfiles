@@ -79,11 +79,18 @@ function! VimuxSlime()
 endfunction
 
 function! HashToJson()
-  execute ":s/=>/: /g"
-  execute ":s/nil/null"
+  :%s/ \?=>/: /ge
+  :%s/nil/null/ge
+  " execute :silent! ":s/=>/: /g"
+  " execute :silent! ":s/nil/null/g"
 endfunction
 
-command! PpJSON :%!python -m json.tool
+function! CleanUpJson()
+  :%!python -m json.tool
+  :set filetype=json
+endfunction
+
+command! PpJSON :call CleanUpJson()
 command! Chrome execute ':silent !open -a Google\ Chrome'
       \ | execute ':redraw!'
 
