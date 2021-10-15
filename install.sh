@@ -121,8 +121,9 @@ install "ruby-install"
 install "doctl"
 install "hub"
 install "terminal-notifier"
-install "ctags"
+# install "ctags"
 
+# brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # brew install --cask 1password
 # brew install --cask iterm2
 # brew install --cask slack
