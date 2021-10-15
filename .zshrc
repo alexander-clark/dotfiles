@@ -8,13 +8,14 @@ plugins=(git rails brew)
 
 source $ZSH/oh-my-zsh.sh
 
+# vim keybindings
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
 bindkey '^x^e' edit-command-line
 
+# Autocompletion of hosts, based on ssh and config file
 [ -f ~/.ssh/config ] && : ${(A)ssh_config_hosts:=${${${${(@M)${(f)"$(<~/.ssh/config)"}:#Host *}#Host }:#*\**}:#*\?*}}
-
 zstyle ':completion:*:*:*' hosts $ssh_config_hosts
 
 # Personal extras
