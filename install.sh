@@ -169,6 +169,8 @@ link "$dir/vim/vundle.vim" "$HOME/.vim/vundle.vim"
 vim +PluginInstall +qall
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/swapfiles
+mkdir -p ~/.vim/templates
+link "$dir/vim/blog-post-template.md" "$HOME/.vim/templates/blog-post.md"
 
 # terminfo
 tic "$dir/tmux-256color-italic.terminfo"

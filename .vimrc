@@ -40,6 +40,9 @@ augroup Docker
   autocmd BufNewFile,BufRead Dockerfile-* set syntax=Dockerfile
 augroup END
 
+" Skeletons
+autocmd BufNewFile *blog/_posts/*.md 0r ~/.vim/templates/blog-post.md
+
 " Load plugins
 if filereadable(expand("$HOME/.vim/vundle.vim"))
   source $HOME/.vim/vundle.vim
