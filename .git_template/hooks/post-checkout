@@ -1,0 +1,8 @@
+#!/bin/sh
+
+LOCAL_HOOK=$HOME/.git_template.local/hooks/post-checkout
+[[ -f $LOCAL_HOOK ]] && source $LOCAL_HOOK
+
+.git/hooks/ctags >/dev/null 2>&1 &
+[ -f Gemfile ] && bundle install > /dev/null &
+[ -f db/schema.rb ] && bin/rake db:migrate > /dev/null &
