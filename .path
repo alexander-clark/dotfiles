@@ -1,0 +1,4 @@
+export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alexander/bin"
+export PATH="/usr/local/opt/mysql-client/bin:$PATH"
+export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
+export PATH="/usr/local/sbin:$PATH"

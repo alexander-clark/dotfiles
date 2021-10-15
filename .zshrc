@@ -8,18 +8,6 @@ plugins=(git rails brew)
 
 source $ZSH/oh-my-zsh.sh
 
-if [ -f ~/.extra ]; then
-  source ~/.extra
-fi
-
-# User configuration
-
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/Users/alexander/bin"
-export EDITOR='vim'
-export GPG_TTY=$(tty)
-export DEV_DIRECTORY=/Users/alexander/Devel
-export COMPOSE_FILE="$DEV_DIRECTORY/scripts/docker-compose.yml"
-
 bindkey -v
 bindkey -M viins 'jk' vi-cmd-mode
 bindkey '^R' history-incremental-search-backward
@@ -29,23 +17,10 @@ bindkey '^x^e' edit-command-line
 
 zstyle ':completion:*:*:*' hosts $ssh_config_hosts
 
-# Personal aliases
+# Personal extras
+for file in ~/.{aliases,functions,extra,exports,path}; do
+  if [ -f "$file" ]; then
+    source "$file"
+  fi
+done
 
-alias gap='ga -p'
-alias gcb='gco -b'
-alias gdh='git --no-pager diff --name-status HEAD~1'
-alias gds='gd --staged'
-alias tpairsetup="tmux -S /tmp/pair new -s pair"
-alias tpair="tmux -S /tmp/pair attach"
-# rtest() { bundle exec ruby -I "lib:test" "$*"; }
-rtest() { bundle exec rspec "$*"; }
-
-hitch() {
-  command hitch "$@"
-  if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
-}
-
-alias unhitch='hitch -u'
-export PATH="/usr/local/opt/mysql-client/bin:$PATH"
-export PATH="/usr/local/opt/postgresql@12/bin:$PATH"
-export PATH="/usr/local/sbin:$PATH"
