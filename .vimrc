@@ -15,6 +15,8 @@ set expandtab
 " Highlight search results
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 " folding
 set foldmethod=indent
@@ -37,7 +39,7 @@ autocmd BufRead,BufNewFile *.axlsx set ft=ruby
 
 augroup Docker
   au!
-  autocmd BufNewFile,BufRead Dockerfile-* set syntax=Dockerfile
+  autocmd BufNewFile,BufRead Dockerfile-* set filetype=Dockerfile
 augroup END
 
 " Skeletons
@@ -107,7 +109,7 @@ nnoremap <Leader>n :nohlsearch<CR> " unhighlight
 inoremap jk <Esc>
 
 map <F5> :Chrome<CR>
-map <Leader>rs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <Leader>rs :call VimuxRunCommand("clear; rtest " . bufname("%") . ":" . line("."))<CR>
 map <Leader>rt :call VimuxRunCommand("clear; rtest " . bufname("%"))<CR>
 map <leader>rr :call VimuxRunCommand("clear; rake test")<CR>
 map <Leader>rp :VimuxPromptCommand<CR>
