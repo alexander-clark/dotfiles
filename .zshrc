@@ -24,3 +24,6 @@ for file in ~/.{aliases,functions,extra,exports,path}; do
   fi
 done
 
+# chruby
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+source /usr/local/opt/chruby/share/chruby/auto.sh

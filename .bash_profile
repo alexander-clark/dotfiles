@@ -7,4 +7,6 @@ if [ -f ~/.extra ]; then
 fi
 
 [[ -s "$HOME/.profile" ]] && source "$HOME/.profile" # Load the default .profile
-eval "$(rbenv init -)"
+
+source /usr/local/opt/chruby/share/chruby/chruby.sh
+# source /usr/local/opt/chruby/share/chruby/auto.sh
