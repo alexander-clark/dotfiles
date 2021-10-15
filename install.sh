@@ -172,6 +172,11 @@ mkdir -p ~/.vim/swapfiles
 mkdir -p ~/.vim/templates
 link "$dir/vim/blog-post-template.md" "$HOME/.vim/templates/blog-post.md"
 
+# @TODO: vimspector
+# mkdir ~/.vim/bundle/vimspector/gadgets/custom/
+# cp cust_vscode-ruby.json ~/.vim/bundle/vimspector/gadgets/custom/cust_vscode-ruby.json
+# ~/.vim/bundle/vimspector/install_gadget.py --upgrade
+
 # terminfo
 tic "$dir/tmux-256color-italic.terminfo"
 tic "$dir/xterm-256color-italic.terminfo"
