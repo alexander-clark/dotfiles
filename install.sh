@@ -24,12 +24,20 @@ info () {
 link() {
   local src=$1 dst=$2
   if [ -e "$dst" ]; then
-    skip "$dst exists"
+    if [ -L "$dst" ]; then
+      if [ "$(readlink $dst)" == "$src" ]; then
+        skip "$dst exists"
+      else
+        fail "$dst is already linked elsewhere"
+      fi
+    else
+      fail "$dst already exists, but is a regular file"
+    fi
   else
     if ln -s "$src" "$dst"; then
-      success "$src linked to $dst"
+      success "$dst linked to $src"
     else
-      fail "unable to link $src to $dst"
+      fail "unable to link $dst to $src"
     fi
   fi
 }
@@ -52,7 +60,7 @@ install() {
   if ! echo $installed | grep "^$1\$"; then
     skip "$1 is already installed."
   else
-    if brew install $1; then
+    if brew install $2 $1; then
       success "$1 has been installed."
     else
       fail "Unable to install $1."
@@ -118,13 +126,13 @@ install "ctags"
 # brew install --cask 1password
 # brew install --cask iterm2
 # brew install --cask slack
-brew install --cask spotify
-brew install --cask alfred
-brew install --cask trailer
-brew install --cask freedom
-brew install --cask docker
-brew install --cask caffeine
-brew install --cask hammerspoon
+install spotify --cask
+install alfred --cask
+install trailer --cask
+install freedom --cask
+install docker --cask
+install caffeine --cask
+install hammerspoon --cask
 # brew install --cask awscli
 # brew install --cask google-chrome
 # brew install --cask firefox
