@@ -24,12 +24,20 @@ info () {
 link() {
   local src=$1 dst=$2
   if [ -e "$dst" ]; then
-    skip "$dst exists"
+    if [ -L "$dst" ]; then
+      if [ "$(readlink $dst)" == "$src" ]; then
+        skip "$dst exists"
+      else
+        fail "$dst is already linked elsewhere"
+      fi
+    else
+      fail "$dst already exists, but is a regular file"
+    fi
   else
     if ln -s "$src" "$dst"; then
-      success "$src linked to $dst"
+      success "$dst linked to $src"
     else
-      fail "unable to link $src to $dst"
+      fail "unable to link $dst to $src"
     fi
   fi
 }
@@ -52,7 +60,7 @@ install() {
   if ! echo $installed | grep "^$1\$"; then
     skip "$1 is already installed."
   else
-    if brew install $1; then
+    if brew install $2 $1; then
       success "$1 has been installed."
     else
       fail "Unable to install $1."
@@ -108,22 +116,24 @@ install "bash-completion"
 install "git"
 install "mysql-client"
 install "libpq"
-install "rbenv"
+install "chruby"
+install "ruby-install"
 install "doctl"
 install "hub"
 install "terminal-notifier"
-install "ctags"
+# install "ctags"
 
+# brew install --HEAD universal-ctags/universal-ctags/universal-ctags
 # brew install --cask 1password
 # brew install --cask iterm2
 # brew install --cask slack
-brew install --cask spotify
-brew install --cask alfred
-brew install --cask trailer
-brew install --cask freedom
-brew install --cask docker
-brew install --cask caffeine
-brew install --cask hammerspoon
+install spotify --cask
+install alfred --cask
+install trailer --cask
+install freedom --cask
+install docker --cask
+install caffeine --cask
+install hammerspoon --cask
 # brew install --cask awscli
 # brew install --cask google-chrome
 # brew install --cask firefox
@@ -137,7 +147,7 @@ brew install --cask hammerspoon
 
 # Symlink dotfiles
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-for file in .bash_profile .bashrc .ctags .editrc .gitconfig .gitmessage .global_ignore .inputrc .tmux.conf .vimrc .zlogin .zshrc; do
+for file in .{aliases,bash_profile,bashrc,ctags,editrc,exports,functions,git_template,gitconfig,gitmessage,global_ignore,inputrc,path,tmux.conf,vimrc,zlogin,zshrc}; do
   link "$dir/$file" "$HOME/$file"
 done
 link "$dir/alexander.zsh-theme" "$HOME/.oh-my-zsh/themes/alexander.zsh-theme"
@@ -159,6 +169,13 @@ link "$dir/vim/vundle.vim" "$HOME/.vim/vundle.vim"
 vim +PluginInstall +qall
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/swapfiles
+mkdir -p ~/.vim/templates
+link "$dir/vim/blog-post-template.md" "$HOME/.vim/templates/blog-post.md"
+
+# @TODO: vimspector
+# mkdir ~/.vim/bundle/vimspector/gadgets/custom/
+# cp cust_vscode-ruby.json ~/.vim/bundle/vimspector/gadgets/custom/cust_vscode-ruby.json
+# ~/.vim/bundle/vimspector/install_gadget.py --upgrade
 
 # terminfo
 tic "$dir/tmux-256color-italic.terminfo"

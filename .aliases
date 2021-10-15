@@ -1,0 +1,17 @@
+# Personal aliases
+
+alias dcd='docker-compose down'
+alias dcu='docker-compose up --build -d'
+alias dcl='docker-compose logs -f '
+alias dcr='docker-compose restart '
+alias dce='docker-compose exec '
+alias dps='docker ps'
+alias gap='ga -p'
+alias gcb='gco -b'
+alias gdh='git --no-pager diff --name-status HEAD~1'
+alias gds='gd --staged'
+alias tpairsetup="tmux -S /tmp/pair new -s pair"
+alias tpair="tmux -S /tmp/pair attach"
+alias tcal="tmux attach -t calendar"
+alias unhitch='hitch -u'
+

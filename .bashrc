@@ -8,3 +8,9 @@ MAGENTA="\[\e[1;35m\]"
 GIT_PROMPT="\$(__git_ps1 ' ($MAGENTA%s$RESET)')"
 
 PS1="$BOLD_GREEN[$BLUE\W$RESET$GIT_PROMPT$BOLD_GREEN]\$$RESET "
+
+# Personal aliases
+if [ -f ~/.aliases ]; then
+  source ~/.aliases
+fi
+

@@ -15,6 +15,8 @@ set expandtab
 " Highlight search results
 set hlsearch
 set incsearch
+set ignorecase
+set smartcase
 
 " folding
 set foldmethod=indent
@@ -37,8 +39,11 @@ autocmd BufRead,BufNewFile *.axlsx set ft=ruby
 
 augroup Docker
   au!
-  autocmd BufNewFile,BufRead Dockerfile-* set syntax=Dockerfile
+  autocmd BufNewFile,BufRead Dockerfile-* set filetype=Dockerfile
 augroup END
+
+" Skeletons
+autocmd BufNewFile *blog/_posts/*.md 0r ~/.vim/templates/blog-post.md
 
 " Load plugins
 if filereadable(expand("$HOME/.vim/vundle.vim"))
@@ -46,7 +51,7 @@ if filereadable(expand("$HOME/.vim/vundle.vim"))
 endif
 
 " Colors
-colorscheme nord
+colorscheme embark
 " set background=dark
 let &t_8f="\<Esc>[38;2;%lu;%lu;%lum"
 let &t_8b="\<Esc>[48;2;%lu;%lu;%lum"
@@ -55,7 +60,7 @@ set termguicolors
 highlight Comment cterm=italic gui=italic
 
 " Plugin settings
-let g:airline_theme = 'nord'
+let g:airline_theme = 'embark'
 let g:airline_powerline_fonts = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
@@ -76,11 +81,18 @@ function! VimuxSlime()
 endfunction
 
 function! HashToJson()
-  execute ":s/=>/: /g"
-  execute ":s/nil/null"
+  :%s/ \?=>/: /ge
+  :%s/nil/null/ge
+  " execute :silent! ":s/=>/: /g"
+  " execute :silent! ":s/nil/null/g"
 endfunction
 
-command! PpJSON :%!python -m json.tool
+function! CleanUpJson()
+  :%!python -m json.tool
+  :set filetype=json
+endfunction
+
+command! PpJSON :call CleanUpJson()
 command! Chrome execute ':silent !open -a Google\ Chrome'
       \ | execute ':redraw!'
 
@@ -97,7 +109,7 @@ nnoremap <Leader>n :nohlsearch<CR> " unhighlight
 inoremap jk <Esc>
 
 map <F5> :Chrome<CR>
-map <Leader>rs :call VimuxRunCommand("clear; rspec " . bufname("%"))<CR>
+map <Leader>rs :call VimuxRunCommand("clear; rtest " . bufname("%") . ":" . line("."))<CR>
 map <Leader>rt :call VimuxRunCommand("clear; rtest " . bufname("%"))<CR>
 map <leader>rr :call VimuxRunCommand("clear; rake test")<CR>
 map <Leader>rp :VimuxPromptCommand<CR>
