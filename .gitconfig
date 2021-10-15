@@ -1,18 +1,16 @@
 [core]
 	editor = vim
-	excludesfile = /Users/alexander/.global_ignore
+	excludesfile = ~/.global_ignore
 
 [alias]
   up = "!git remote update -p; git merge --ff-only @{u}"
+  ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+
+[commit]
+  template = ~/.gitmessage
 
 [pager]
   branch = false
-
-[filter "lfs"]
-	clean = git-lfs clean -- %f
-	smudge = git-lfs smudge -- %f
-	process = git-lfs filter-process
-	required = true
 
 [init]
 	defaultBranch = main
