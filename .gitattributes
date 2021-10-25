@@ -1,0 +1,3 @@
+*.html diff=html
+*.rb diff=ruby
+*.sh diff=bash

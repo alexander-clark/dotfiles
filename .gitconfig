@@ -1,16 +1,22 @@
 [core]
 	editor = vim
 	excludesfile = ~/.global_ignore
+	attributesfile = ~/.gitattributes
 
 [alias]
   up = "!git remote update -p; git merge --ff-only @{u}"
   ctags = "!sh -c '[ -f .git/hooks/ctags ] || git init; .git/hooks/ctags' git-ctags"
+  fixup = "!git log -n 50 --pretty=format:'%h %s' --no-merges | fzf | cut -c -7 | xargs -o git commit --fixup"
 
 [commit]
   template = ~/.gitmessage
 
 [pager]
   branch = false
+  diff = /usr/local/share/git-core/contrib/diff-highlight/diff-highlight | less
+
+[rebase]
+  autosquash = true
 
 [init]
 	defaultBranch = main
