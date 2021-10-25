@@ -121,6 +121,7 @@ install "ruby-install"
 install "doctl"
 install "hub"
 install "terminal-notifier"
+install "fzf"
 # install "ctags"
 
 # brew install --HEAD universal-ctags/universal-ctags/universal-ctags
@@ -147,7 +148,7 @@ install hammerspoon --cask
 
 # Symlink dotfiles
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
-for file in .{aliases,bash_profile,bashrc,ctags,editrc,exports,functions,git_template,gitconfig,gitmessage,global_ignore,inputrc,path,tmux.conf,vimrc,zlogin,zshrc}; do
+for file in .{aliases,bash_profile,bashrc,ctags,editrc,exports,functions,git_template,gitattributes,gitconfig,gitmessage,global_ignore,inputrc,path,tmux.conf,vimrc,zlogin,zshrc}; do
   link "$dir/$file" "$HOME/$file"
 done
 link "$dir/alexander.zsh-theme" "$HOME/.oh-my-zsh/themes/alexander.zsh-theme"
