@@ -66,6 +66,7 @@ let g:airline#extensions#tabline#enabled = 1
 let g:airline#extensions#tabline#fnamemod = ':t'
 let g:NERDSpaceDelims = 1
 let g:ackprg = 'ag --vimgrep'
+let g:camelcasemotion_key = ','
 let g:nord_italic_comments = 1
 let g:syntastic_javascript_checkers = ["jshint"]
 let g:syntastic_always_populate_loc_list = 1

@@ -1,3 +1,4 @@
+set nocompatible
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -9,6 +10,7 @@ Plugin 'gmarik/Vundle.vim'
 
 Plugin 'arcticicestudio/nord-vim'
 Plugin 'benmills/vimux'
+Plugin 'bkad/CamelCaseMotion'
 Plugin 'bling/vim-airline'
 Plugin 'bronson/vim-trailing-whitespace'
 Plugin 'christoomey/vim-tmux-navigator'
