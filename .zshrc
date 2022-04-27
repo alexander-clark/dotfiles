@@ -4,6 +4,8 @@ export ZSH=$HOME/.oh-my-zsh
 # Use custom oh-my-zsh theme
 ZSH_THEME="alexander"
 
+setopt HIST_IGNORE_SPACE
+
 plugins=(git rails brew)
 
 source $ZSH/oh-my-zsh.sh
