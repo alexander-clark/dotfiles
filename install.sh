@@ -166,7 +166,13 @@ else
   fi
 fi
 link "$dir/vim/vundle.vim" "$HOME/.vim/vundle.vim"
-vim +PluginInstall +qall
+vim -u "$dir/vim/vundle.vim" +PluginInstall +qall
+if [[ $? != 0 ]]; then
+  fail "Unable to install vim plugins"
+else
+  success "Vim plugins updated"
+fi
+
 mkdir -p ~/.vim/backup
 mkdir -p ~/.vim/swapfiles
 mkdir -p ~/.vim/templates
