@@ -111,7 +111,6 @@ installed=$(brew list)
 install "vim"
 install "the_silver_searcher"
 install "tmux"
-install "reattach-to-user-namespace"
 install "bash-completion"
 install "git"
 install "mysql-client"
