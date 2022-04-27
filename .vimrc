@@ -114,6 +114,7 @@ map <F5> :Chrome<CR>
 map <Leader>rs :call VimuxRunCommand("clear; rtest " . bufname("%") . ":" . line("."))<CR>
 map <Leader>rt :call VimuxRunCommand("clear; rtest " . bufname("%"))<CR>
 map <leader>rr :call VimuxRunCommand("clear; rake test")<CR>
+map <leader>rx :call VimuxRunCommand("clear; ruby " . bufname("%"))<CR>
 map <Leader>rp :VimuxPromptCommand<CR>
 map <Leader>rl :VimuxRunLastCommand<CR>
 map <Leader>ri :VimuxInspectRunner<CR>
