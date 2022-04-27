@@ -10,6 +10,7 @@ alias gap='ga -p'
 alias gcb='gco -b'
 alias gdh='git --no-pager diff --name-status HEAD~1'
 alias gds='gd --staged'
+alias tm="rails db:migrate RAILS_ENV=test"
 alias tpairsetup="tmux -S /tmp/pair new -s pair"
 alias tpair="tmux -S /tmp/pair attach"
 alias tcal="tmux attach -t calendar"
