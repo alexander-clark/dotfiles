@@ -12,6 +12,15 @@ get_keychain_pw () {
   security find-generic-password -a "$USER" -s "$1" -w
 }
 
+set_keychain_pw() {
+  security add-generic-password -a "$USER" -s "$1" -w
+}
+
+update_keychain_pw() {
+  security delete-generic-password -a "$USER" -s "$1"
+  security add-generic-password -a "$USER" -s "$1" -w
+}
+
 hitch() {
   command hitch "$@"
   if [[ -s "$HOME/.hitch_export_authors" ]] ; then source "$HOME/.hitch_export_authors" ; fi
