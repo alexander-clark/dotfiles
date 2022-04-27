@@ -107,6 +107,7 @@ noremap <Up> <NOP>
 noremap <Down> <NOP>
 
 nnoremap <Leader>n :nohlsearch<CR> " unhighlight
+nnoremap <leader>c :set ic!<cr>
 inoremap jk <Esc>
 
 map <F5> :Chrome<CR>
