@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# To install:
-# brew install vim --with-client-server # homebrew vim includes +clipboard by default
-
 success () {
   printf "\r\033[2K  [ \033[00;32mOK\033[0m ] %s\n" "$1"
 }
@@ -56,7 +53,6 @@ copy() {
 }
 
 install() {
-  # if brew list $1 &> /dev/null; then
   if ! echo $installed | grep "^$1\$"; then
     skip "$1 is already installed."
   else
@@ -107,7 +103,6 @@ else
 fi
 
 installed=$(brew list)
-# Install vim
 install "vim"
 install "the_silver_searcher"
 install "tmux"
@@ -121,12 +116,7 @@ install "doctl"
 install "hub"
 install "terminal-notifier"
 install "fzf"
-# install "ctags"
 
-# brew install --HEAD universal-ctags/universal-ctags/universal-ctags
-# brew install --cask 1password
-# brew install --cask iterm2
-# brew install --cask slack
 install spotify --cask
 install alfred --cask
 install trailer --cask
@@ -134,16 +124,8 @@ install freedom --cask
 install docker --cask
 install caffeine --cask
 install hammerspoon --cask
-# brew install --cask awscli
-# brew install --cask google-chrome
-# brew install --cask firefox
-# brew install --cask vienna
 
-# Paprika
-# Opus Domini?
-# Be Focused Pro
 
-# TODO make the above a function and iterate over packages vim rbenv the-silver-searcher, etc
 
 # Symlink dotfiles
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
