@@ -9,7 +9,7 @@ rtest() {
 }
 
 get_keychain_pw () {
-  security find-generic-password -a "$USER" -s "$1" -w
+  security find-generic-password -a "$USER" -s "$1"
 }
 
 set_keychain_pw() {
@@ -17,8 +17,12 @@ set_keychain_pw() {
 }
 
 update_keychain_pw() {
-  security delete-generic-password -a "$USER" -s "$1"
+  security delete-generic-password -a "$USER" -s "$1" &> /dev/null
   security add-generic-password -a "$USER" -s "$1" -w
+}
+
+delete_keychain_pw() {
+  security delete-generic-password -a "$USER" -s "$1" > /dev/null
 }
 
 hitch() {
