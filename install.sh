@@ -53,7 +53,7 @@ copy() {
 }
 
 install() {
-  if ! echo $installed | grep "^$1\$"; then
+  if echo $installed | grep "\b$1\b" > /dev/null; then
     skip "$1 is already installed."
   else
     if brew install $2 $1; then
