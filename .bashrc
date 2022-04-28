@@ -9,8 +9,13 @@ GIT_PROMPT="\$(__git_ps1 ' ($MAGENTA%s$RESET)')"
 
 PS1="$BOLD_GREEN[$BLUE\W$RESET$GIT_PROMPT$BOLD_GREEN]\$$RESET "
 
-# Personal aliases
-if [ -f ~/.aliases ]; then
-  source ~/.aliases
-fi
+# Personal extras
+for file in ~/.{aliases,functions,exports,path}; do
+  if [ -f "$file" ]; then
+    source "$file"
+  fi
+  if [ -f "$file.local" ]; then
+    source "$file.local"
+  fi
+done
 

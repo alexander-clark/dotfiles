@@ -21,9 +21,12 @@ bindkey '^x^e' edit-command-line
 zstyle ':completion:*:*:*' hosts $ssh_config_hosts
 
 # Personal extras
-for file in ~/.{aliases,functions,extra,exports,path}; do
+for file in ~/.{aliases,functions,exports,path}; do
   if [ -f "$file" ]; then
     source "$file"
+  fi
+  if [ -f "$file.local" ]; then
+    source "$file.local"
   fi
 done
 

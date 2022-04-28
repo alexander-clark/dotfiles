@@ -1,0 +1,2 @@
+# set_keychain_pw secret_name
+export MY_ENV_VAR="$(get_keychain_pw secret_name)"
