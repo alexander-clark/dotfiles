@@ -103,29 +103,14 @@ else
 fi
 
 installed=$(brew list)
-install "vim"
-install "the_silver_searcher"
-install "tmux"
-install "bash-completion"
-install "git"
-install "mysql-client"
-install "libpq"
-install "chruby"
-install "ruby-install"
-install "doctl"
-install "hub"
-install "terminal-notifier"
-install "fzf"
 
-install spotify --cask
-install alfred --cask
-install trailer --cask
-install freedom --cask
-install docker --cask
-install caffeine --cask
-install hammerspoon --cask
+while read package; do
+  install "$package"
+done <homebrew
 
-
+while read package; do
+  install "$package" --cask
+done <casks
 
 # Symlink dotfiles
 dir=$(cd -P -- "$(dirname -- "$0")" && pwd -P)
