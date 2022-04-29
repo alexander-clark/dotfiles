@@ -67,12 +67,16 @@ install() {
 
 # Make sure Homebrew is installed and up to date
 if which -s brew; then
-  info "Homebrew was found. Attemping to update."
-  if brew update; then
-    success "Homebrew is now up to date."
+  if [[ "$@" == "-a" ]]; then
+    skip "Skipping Homebrew update"
   else
-    fail "Unable to update Homebrew."
-    exit 1
+    info "Homebrew was found. Attemping to update."
+    if brew update; then
+      success "Homebrew is now up to date."
+    else
+      fail "Unable to update Homebrew."
+      exit 1
+    fi
   fi
 else
   info "Homebrew is not installed. Attempting install."
