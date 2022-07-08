@@ -9,7 +9,7 @@ rtest() {
 }
 
 get_keychain_pw () {
-  security find-generic-password -a "$USER" -s "$1"
+  security find-generic-password -a "$USER" -s "$1" -w
 }
 
 set_keychain_pw() {
